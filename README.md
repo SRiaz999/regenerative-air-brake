@@ -57,4 +57,6 @@ Moving forward, I want to investigate lighter, more affordable, and durable mate
 ### Testing
 
 - 🎥 [Further testing](further%20testing.mp4)
-- 🎥 [Final testing](final_testing.mp4)
+- 🎥 https://github.com/user-attachments/assets/f03c6ce6-dc25-43fc-82be-aa4173f0b59c
+
+
