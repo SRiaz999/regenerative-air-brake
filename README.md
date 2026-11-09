@@ -64,3 +64,58 @@ https://github.com/user-attachments/assets/66271cf9-ae76-40ab-8bba-d0832c26c70d 
 - 🎥 https://github.com/user-attachments/assets/f03c6ce6-dc25-43fc-82be-aa4173f0b59c (final testing)
 
 
+
+
+https://github.com/user-attachments/assets/cc5fb041-7a62-4df0-8de2-a0a545ac692e
+
+
+
+https://github.com/user-attachments/assets/30a4e54e-c201-414e-82b6-5506a21fb3a9
+
+
+
+https://github.com/user-attachments/assets/99077d5b-815a-44bb-b002-7c9a212f3b3e
+
+
+
+https://github.com/user-attachments/assets/3e5be541-a3bf-4c44-af4b-a106f6f3da82
+
+
+
+https://github.com/user-attachments/assets/6acb4f30-d705-4c54-a386-70ce41cabc0d
+
+
+
+https://github.com/user-attachments/assets/1aaeb679-259c-4fe0-ae76-a983a4b092f3
+
+
+
+https://github.com/user-attachments/assets/dea4efa2-3072-4902-9fa6-0224a1e95111
+
+<img width="1204" height="1600" alt="fitting the fan into the shaft" src="https://github.com/user-attachments/assets/bcce51c2-bcd4-459f-908b-4bee1f74e70d" />
+
+
+https://github.com/user-attachments/assets/865f6662-1b98-445b-bd79-4ed2ee37ee33
+
+<img width="1204" height="1600" alt="gears made and first phase of testing" src="https://github.com/user-attachments/assets/3acb81a8-f142-4e31-bb67-825b89bf7013" />
+
+
+https://github.com/user-attachments/assets/5fee960d-5273-4963-837e-f09af823ae18
+
+<img width="1204" height="1600" alt="making the shafts diameter smaller with lathe machine" src="https://github.com/user-attachments/assets/fdaefd8a-eaca-4833-9b5e-989f720e972a" />
+
+
+https://github.com/user-attachments/assets/d1fe6a89-5f65-4bfd-9250-da2c015eff42
+
+
+
+https://github.com/user-attachments/assets/94b2d616-18b5-48b5-bd4c-c55b437e2b24
+
+<img width="1204" height="1600" alt="testing the gears and the turbines" src="https://github.com/user-attachments/assets/07d25705-035c-4dcd-9452-d7645d77302d" />
+
+
+https://github.com/user-attachments/assets/bf9ea90e-0245-456c-b7fd-fad23e26b9e5
+
+
+
+
