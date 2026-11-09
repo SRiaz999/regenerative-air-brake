@@ -20,7 +20,6 @@ Moving forward, I want to investigate lighter, more affordable, and durable mate
 
 ## Build log
 
-Click any 🎥 video to watch it on GitHub.
 
 ### Gears and turbines
 
@@ -59,7 +58,3 @@ Click any 🎥 video to watch it on GitHub.
 
 - 🎥 [Further testing](further%20testing.mp4)
 - 🎥 [Final testing](final_testing.mp4)
-
-## Files
-
-- 📄 [Project overview (Word document)](project%20overview.docx)
