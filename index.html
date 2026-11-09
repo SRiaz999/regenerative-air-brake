@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two-Fan Regenerative Air-Braking System · Suban Riaz</title>
+<meta name="description" content="A working model of a regenerative air-braking system for a car that stores braking energy in a spring and reuses it as forward thrust. Designed and built by Suban Riaz.">
+<meta property="og:title" content="Two-Fan Regenerative Air-Braking System">
+<meta property="og:description" content="Braking energy captured by a turbine, stored in a spring, and released as thrust. Designed and machined by Suban Riaz.">
+<meta property="og:image" content="testing%20the%20gears%20and%20the%20turbines.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1113; --panel:#171a1d; --panel-2:#1e2226; --line:#2a2f35;
+    --text:#e4e7ea; --muted:#949ca5; --accent:#f2a93b; --accent-dim:#f2a93b22;
+    --steel:#b9c1c9;
+    --sans:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img,video{display:block;max-width:100%}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .label{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:10;background:#0f1113e6;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  nav .brand{font-weight:700;letter-spacing:.02em;color:var(--text)}
+  nav .brand span{color:var(--accent)}
+  nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  nav ul a{color:var(--muted);font-size:.92rem}
+  nav ul a:hover{color:var(--text);text-decoration:none}
+  @media (max-width:720px){nav ul{display:none}}
+
+  /* hero */
+  .hero{padding:72px 0 64px;border-bottom:1px solid var(--line);
+    background:radial-gradient(1200px 500px at 85% -10%,#f2a93b14,transparent 60%),
+               repeating-linear-gradient(90deg,transparent 0 79px,#ffffff06 79px 80px)}
+  .hero-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+  h1{font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1.05;margin:14px 0 18px;letter-spacing:-.02em}
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{color:var(--steel);font-size:1.12rem;max-width:34em}
+  .byline{margin-top:26px;font-family:var(--mono);font-size:.85rem;color:var(--muted)}
+  .byline strong{color:var(--text);font-weight:500}
+  .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-block;padding:11px 18px;border-radius:6px;font-weight:500;font-size:.95rem;border:1px solid var(--line);color:var(--text)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#1a1205}
+  .btn:hover{text-decoration:none;filter:brightness(1.08)}
+  .frame{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .frame video{width:100%;aspect-ratio:16/10;object-fit:cover;background:#000}
+  .frame .cap{padding:10px 14px;font-family:var(--mono);font-size:.8rem;color:var(--muted);border-top:1px solid var(--line)}
+
+  section{padding:84px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:clamp(1.7rem,3vw,2.3rem);margin:10px 0 18px;letter-spacing:-.01em}
+  .intro{color:var(--steel);max-width:46em;font-size:1.05rem}
+
+  /* energy cycle */
+  .cycle{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;counter-reset:step}
+  @media (max-width:900px){.cycle{grid-template-columns:1fr 1fr;gap:16px}}
+  @media (max-width:560px){.cycle{grid-template-columns:1fr}}
+  .step{position:relative;background:var(--panel);border:1px solid var(--line);padding:24px 22px 26px;counter-increment:step}
+  @media (min-width:901px){
+    .step{border-right:none}
+    .step:first-child{border-radius:10px 0 0 10px}
+    .step:last-child{border-right:1px solid var(--line);border-radius:0 10px 10px 0}
+    .step:not(:last-child)::after{content:"";position:absolute;right:-9px;top:50%;width:16px;height:16px;
+      background:var(--panel);border-top:1px solid var(--line);border-right:1px solid var(--line);transform:translateY(-50%) rotate(45deg);z-index:2}
+  }
+  @media (max-width:900px){.step{border-radius:10px}}
+  .step::before{content:"0" counter(step);font-family:var(--mono);color:var(--accent);font-size:.85rem}
+  .step h3{margin:8px 0 8px;font-size:1.15rem}
+  .step p{margin:0;color:var(--muted);font-size:.95rem}
+  .energy{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-dim);padding:4px 8px;border-radius:4px}
+
+  /* components */
+  .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+  @media (max-width:900px){.parts{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.parts{grid-template-columns:1fr}}
+  .part{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px}
+  .part h3{margin:0 0 6px;font-size:1.05rem}
+  .part p{margin:0;color:var(--muted);font-size:.93rem}
+  .part .tag{font-family:var(--mono);font-size:.72rem;color:var(--steel);opacity:.7}
+
+  /* story */
+  .story{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:20px}
+  @media (max-width:900px){.story{grid-template-columns:1fr}}
+  .story p{color:var(--steel);margin:0 0 16px}
+  .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .skills span{font-family:var(--mono);font-size:.78rem;border:1px solid var(--line);background:var(--panel-2);padding:6px 10px;border-radius:999px;color:var(--steel)}
+
+  /* build log */
+  .phase{margin-top:56px}
+  .phase:first-of-type{margin-top:36px}
+  .phase-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+  .phase-head h3{margin:0;font-size:1.3rem}
+  .phase-head .n{font-family:var(--mono);color:var(--accent);font-size:.9rem}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+  .card .media{aspect-ratio:3/4;background:#000;overflow:hidden}
+  .card .media img,.card .media video{width:100%;height:100%;object-fit:cover}
+  .card .media img{cursor:zoom-in;transition:transform .4s}
+  .card .media img:hover{transform:scale(1.03)}
+  .card .txt{padding:14px 16px 16px}
+  .card .kind{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .card h4{margin:4px 0 0;font-size:.98rem;font-weight:500;line-height:1.4}
+
+  /* next */
+  .next{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+  @media (max-width:900px){.next{grid-template-columns:1fr}}
+  .next div{border-left:2px solid var(--accent);padding:4px 0 4px 18px}
+  .next h3{margin:0 0 4px;font-size:1.05rem}
+  .next p{margin:0;color:var(--muted);font-size:.95rem}
+
+  footer{padding:40px 0 56px;color:var(--muted);font-size:.9rem}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;z-index:50;padding:24px;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-height:92vh;max-width:92vw;border-radius:6px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Regen<span>/</span>Air-Brake</a>
+    <ul>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#story">Design story</a></li>
+      <li><a href="#build">Build log</a></li>
+      <li><a href="#testing">Testing</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="label">Mechanical engineering project</div>
+      <h1>Two-Fan Regenerative <em>Air-Braking</em> System</h1>
+      <p class="lede">A working model of a car braking system that captures energy from airflow while slowing down, stores it in a spring, and releases it as forward thrust when the car accelerates again.</p>
+      <div class="btns">
+        <a class="btn primary" href="#testing">Watch it work</a>
+        <a class="btn" href="https://github.com/SRiaz999/regenerative-air-brake">View on GitHub</a>
+      </div>
+      <div class="byline">Designed, calculated and machined by <strong>Suban Riaz</strong></div>
+    </div>
+    <div class="frame">
+      <video src="description_model_%20overview.mp4#t=0.1" controls preload="metadata" playsinline></video>
+      <div class="cap">▶ Model overview: Suban explains the design</div>
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <div class="label">How it works</div>
+    <h2>Kinetic → elastic → mechanical</h2>
+    <p class="intro">Instead of wasting braking energy as heat, the system turns the car's motion into stored spring energy, then gives it back as thrust.</p>
+
+    <div class="cycle">
+      <div class="step">
+        <h3>Brake</h3>
+        <p>A shield drops to expose the front turbine to the airflow. It creates drag and spins the drivetrain.</p>
+        <span class="energy">Kinetic energy</span>
+      </div>
+      <div class="step">
+        <h3>Store</h3>
+        <p>Bevel gears turn the rotation 90°, and a pinion drives rack 1 to compress the spring.</p>
+        <span class="energy">→ Elastic potential</span>
+      </div>
+      <div class="step">
+        <h3>Hold</h3>
+        <p>A small spring-powered stopper locks the mechanism, keeping the energy stored.</p>
+        <span class="energy">Stored</span>
+      </div>
+      <div class="step">
+        <h3>Release</h3>
+        <p>When accelerating, the stopper is pulled. The spring drives rack 2 through a separate gear train and spins the rear fan as a propeller.</p>
+        <span class="energy">→ Mechanical thrust</span>
+      </div>
+    </div>
+
+    <div class="parts">
+      <div class="part"><div class="tag">INPUT</div><h3>Front turbine</h3><p>Catches the oncoming air during braking and turns drag into rotation.</p></div>
+      <div class="part"><div class="tag">TRANSMISSION</div><h3>Bevel gears</h3><p>Redirect the turbine's rotation by 90° into the drivetrain.</p></div>
+      <div class="part"><div class="tag">CONVERSION</div><h3>Rack &amp; pinion</h3><p>Turn rotary motion into the straight-line motion that compresses the spring.</p></div>
+      <div class="part"><div class="tag">STORAGE</div><h3>Compression spring</h3><p>Holds the captured energy as elastic potential energy.</p></div>
+      <div class="part"><div class="tag">CONTROL</div><h3>Spring-loaded stopper</h3><p>Locks the compressed spring and releases it on demand.</p></div>
+      <div class="part"><div class="tag">OUTPUT</div><h3>Rear fan</h3><p>Driven by rack 2, it spins as a propeller to push the car forward.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap">
+    <div class="label">Design story</div>
+    <h2>From a past-paper question to a workshop</h2>
+    <div class="story">
+      <div>
+        <p>The hardest problem was turning the turbine's rotation into the straight-line motion needed to compress a spring. After seeing a rack-and-pinion mechanism in a past-paper question, Suban realised it could solve this and adapted it for the design.</p>
+        <p>He did the engineering calculations himself, using what he'd learned in class and researching extra formulas when he needed them. To turn the rotation by 90°, his brother, a mechanical engineer, introduced him to bevel gears. He used Claude to turn his drawings and descriptions into a 3D CAD model.</p>
+      </div>
+      <div>
+        <p>For fabrication, he worked with a mechanic near his home whose machining experience was invaluable. In that small workshop he learned to use lathes, gear shapers, milling machines and welding equipment. Together they made and assembled custom gears, shafts, stoppers and deep-groove ball bearings.</p>
+        <p>The build showed him the real problems of manufacturing and assembly, and how a design has to change once it leaves the calculations.</p>
+        <div class="skills">
+          <span>Lathe turning</span><span>Gear shaping</span><span>Milling</span><span>Welding</span><span>Rack &amp; pinion design</span><span>Bevel gearing</span><span>3D CAD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="build">
+  <div class="wrap">
+    <div class="label">Build log</div>
+    <h2>How it was made</h2>
+    <p class="intro">Every part was made by hand in a local machine workshop. Tap a photo to enlarge it, or play the videos to see each step.</p>
+
+    <div class="phase">
+      <div class="phase-head"><span class="n">01</span><h3>Gears and turbines</h3></div>
+      <div class="grid">
+        <div class="card"><div class="media"><img src="gears%20made%20and%20first%20phase%20of%20testing.jpeg" alt="Machined gears, racks, shafts and bearings laid out on a workbench" loading="lazy"></div>
+          <div class="txt"><div class="kind">Photo</div><h4>Gears made and first phase of testing</h4></div></div>
+        <div class="card"><div class="media"><img src="testing%20the%20gears%20and%20the%20turbines.jpeg" alt="Turbine, shafts, racks and springs being tested together" loading="lazy"></div>
+          <div class="txt"><div class="kind">Photo</div><h4>Testing the gears and the turbines</h4></div></div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="n">02</span><h3>Shafts and bearings</h3></div>
+      <div class="grid">
+        <div class="card"><div class="media"><img src="making%20the%20shafts%20diameter%20smaller%20with%20lathe%20machine.jpeg" alt="A shaft being turned down on a lathe" loading="lazy"></div>
+          <div class="txt"><div class="kind">Photo</div><h4>Making the shaft's diameter smaller on the lathe</h4></div></div>
+        <div class="card"><div class="media"><video src="making%20deep%20groove%20ball%20bearing.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+          <div class="txt"><div class="kind">Video</div><h4>Making the deep-groove ball bearing</h4></div></div>
+        <div class="card"><div class="media"><video src="fitting%20the%20deep%20groove%20ball%20bearings%20on%20the%20shaft.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+          <div class="txt"><div class="kind">Video</div><h4>Fitting the deep-groove ball bearings on the shaft</h4></div></div>
+        <div class="card"><div class="media"><video src="welding%20the%20deep%20groove%20ball%20bearings%20to%20the%20frame%20so%20the%20model%20would%20stand.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+          <div class="txt"><div class="kind">Video</div><h4>Welding the bearings to the frame so the model can stand</h4></div></div>
+        <div class="card"><div class="media"><img src="fitting%20the%20fan%20into%20the%20shaft.jpeg" alt="The fan being fitted onto its shaft on the lathe" loading="lazy"></div>
+          <div class="txt"><div class="kind">Photo</div><h4>Fitting the fan onto the shaft</h4></div></div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="n">03</span><h3>Stoppers and spring mechanism</h3></div>
+      <div class="grid">
+        <div class="card"><div class="media"><video src="stoppers%20overview.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+          <div class="txt"><div class="kind">Video</div><h4>Stoppers overview</h4></div></div>
+        <div class="card"><div class="media"><video src="drilling%20holes%20into%20the%20stoppers.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+          <div class="txt"><div class="kind">Video</div><h4>Drilling holes into the stoppers on the lathe</h4></div></div>
+        <div class="card"><div class="media"><video src="drilling%20holes%20in%20to%20the%20for%20the%20stopper%20to%20fix%20in%20the%20springs%20frame.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+          <div class="txt"><div class="kind">Video</div><h4>Drilling holes in the spring frame to fit the stopper</h4></div></div>
+        <div class="card"><div class="media"><video src="taking%20the%20length%20of%20the%20pinion%20required%20to%20compress%20the%20spring%20so%20that%20we%20can%20cut%20the%20addition%20length%20to%20decrease%20weight.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+          <div class="txt"><div class="kind">Video</div><h4>Measuring the pinion travel needed to compress the spring, then cutting the extra length to save weight</h4></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testing">
+  <div class="wrap">
+    <div class="label">Testing</div>
+    <h2>Watch it run</h2>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+      <div class="card"><div class="media" style="aspect-ratio:auto"><video src="further%20testing.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+        <div class="txt"><div class="kind">Video</div><h4>Further testing</h4></div></div>
+      <div class="card"><div class="media" style="aspect-ratio:auto"><video src="final_testing.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+        <div class="txt"><div class="kind">Video</div><h4>Final testing</h4></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="next" style="border-bottom:none">
+  <div class="wrap">
+    <div class="label">What's next</div>
+    <h2>Making it lighter and more efficient</h2>
+    <div class="next">
+      <div><h3>Better materials</h3><p>Look into lighter, cheaper and more durable materials for the frame and parts.</p></div>
+      <div><h3>Less weight, less loss</h3><p>Cut weight and reduce friction and other energy losses in the drivetrain.</p></div>
+      <div><h3>Refined mechanics</h3><p>Improve the parts so the spring stores and releases energy more effectively.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© Suban Riaz · Two-Fan Regenerative Air-Braking System</div>
+    <div><a href="https://github.com/SRiaz999/regenerative-air-brake">Source &amp; files on GitHub</a></div>
+  </div>
+</footer>
+
+<div class="lb" id="lb"><img alt=""></div>
+<script>
+  const lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
+  document.querySelectorAll('.card img').forEach(i=>i.addEventListener('click',()=>{lbImg.src=i.src;lbImg.alt=i.alt;lb.classList.add('open')}));
+  lb.addEventListener('click',()=>lb.classList.remove('open'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
+  // only one video plays at a time
+  document.querySelectorAll('video').forEach(v=>v.addEventListener('play',()=>document.querySelectorAll('video').forEach(o=>{if(o!==v)o.pause()})));
+</script>
+</body>
+</html>
