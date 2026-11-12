@@ -4,6 +4,8 @@ A model of a regenerative air-braking system for a car that stores braking energ
 
 🌐 **Project website:** https://sriaz999.github.io/regenerative-air-brake/
 
+📐 **Engineering calculations:** [Energy-Storage Turbine System Calculations (PDF)](Energy-Storage%20Turbine%20System%20Calculations.pdf)
+
 ## Model overview
 
 https://github.com/user-attachments/assets/cc5fb041-7a62-4df0-8de2-a0a545ac692e

@@ -252,6 +252,64 @@
   .badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--thrust);box-shadow:0 0 0 0 var(--thrust);animation:pulse 2s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 #7bd88f80}70%{box-shadow:0 0 0 8px #7bd88f00}100%{box-shadow:0 0 0 0 #7bd88f00}}
 
+  /* ---------- calculations ---------- */
+  .specs .v span{font-size:.5em;font-weight:500;margin-left:2px}
+  .specs a{color:inherit;display:block}
+  .specs a:hover{text-decoration:none}
+  .specs a:hover .v{color:var(--accent)}
+  .calc-top{display:grid;grid-template-columns:1.15fr 1fr;gap:20px;margin-top:40px}
+  @media (max-width:960px){.calc-top{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px}
+  .panel h3{margin:0 0 14px;font-size:1rem;font-family:var(--mono);font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .given{width:100%;border-collapse:collapse;font-size:.93rem}
+  .given td{padding:9px 0;border-bottom:1px dashed var(--line-2)}
+  .given tr:last-child td{border-bottom:none}
+  .given td:last-child{text-align:right;white-space:nowrap;padding-left:14px;font-family:var(--mono);color:var(--text)}
+  .given td:first-child{color:var(--steel)}
+  .given .sym{font-family:var(--mono);color:var(--muted);font-size:.8rem;margin-left:6px}
+  .massbar{display:flex;height:34px;border-radius:6px;overflow:hidden;margin:6px 0 16px;border:1px solid var(--line-2)}
+  .massbar div{height:100%;position:relative;transition:filter .2s}
+  .massbar div:hover{filter:brightness(1.2)}
+  .massbar span{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.72rem;color:#0d0f11;font-weight:500;white-space:nowrap}
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:.88rem}
+  .legend div{display:flex;align-items:center;gap:9px;color:var(--steel)}
+  .legend i{width:10px;height:10px;border-radius:2px;flex:none}
+  .legend b{margin-left:auto;font-family:var(--mono);font-weight:400;color:var(--text);font-size:.82rem}
+  .massnote{margin:16px 0 0;font-size:.9rem;color:var(--muted);border-top:1px dashed var(--line-2);padding-top:12px}
+  .massnote strong{color:var(--accent);font-weight:500}
+
+  .chain{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px;counter-reset:c}
+  @media (max-width:960px){.chain{grid-template-columns:1fr 1fr}}
+  @media (max-width:600px){.chain{grid-template-columns:1fr}}
+  .stage-row{grid-column:1/-1;display:flex;align-items:center;gap:12px;margin-top:22px;font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase}
+  .stage-row::after{content:"";flex:1;height:1px;background:var(--line-2)}
+  .calc{counter-increment:c;position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 20px 18px;border-top:3px solid var(--c,var(--accent));transition:transform .25s,border-color .25s}
+  .calc:hover{transform:translateY(-3px)}
+  .calc::before{content:"C-" counter(c,decimal-leading-zero);position:absolute;right:16px;top:14px;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+  .calc h4{margin:0 0 12px;font-size:1.02rem;font-weight:500}
+  .calc .f{font-family:var(--mono);font-size:.95rem;color:var(--text);background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
+  .calc .s{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin:10px 0 12px;line-height:1.55}
+  .calc .r{display:flex;align-items:baseline;gap:8px;border-top:1px dashed var(--line-2);padding-top:12px}
+  .calc .r b{font-size:1.65rem;font-weight:700;color:var(--c,var(--accent));line-height:1}
+  .calc .r span{font-family:var(--mono);font-size:.85rem;color:var(--steel)}
+  .calc .r em{margin-left:auto;font-style:normal;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+  .calc.air{--c:var(--air)} .calc.tur{--c:var(--accent)} .calc.out{--c:var(--thrust)}
+  .calc sup,.calc sub{font-size:.7em}
+  .verdict{display:grid;grid-template-columns:auto 1fr;gap:18px 26px;align-items:center;margin-top:26px;background:linear-gradient(90deg,#7bd88f14,transparent 70%);border:1px solid var(--line-2);border-left:3px solid var(--thrust);border-radius:12px;padding:22px 24px}
+  @media (max-width:600px){.verdict{grid-template-columns:1fr}}
+  .verdict .big{font-size:2.1rem;font-weight:700;line-height:1;color:var(--thrust);font-family:var(--sans)}
+  .verdict .big small{display:block;font-family:var(--mono);font-size:.7rem;color:var(--muted);font-weight:400;letter-spacing:.12em;margin-top:8px}
+  .verdict p{margin:0;color:var(--steel)}
+  .calc-notes{display:grid;grid-template-columns:1fr 1fr auto;gap:18px;margin-top:20px;align-items:stretch}
+  @media (max-width:960px){.calc-notes{grid-template-columns:1fr}}
+  .calc-notes .panel p{margin:0;color:var(--steel);font-size:.93rem}
+  .calc-notes .panel h3{margin-bottom:8px}
+  .pdf{display:flex;flex-direction:column;justify-content:center;gap:10px;min-width:240px;background:var(--accent);color:#1a1205;border-radius:12px;padding:22px;transition:transform .2s,background .2s}
+  .pdf:hover{text-decoration:none;background:#ffb94f;transform:translateY(-2px)}
+  .pdf svg{width:30px;height:30px}
+  .pdf b{font-size:1.05rem}
+  .pdf span{font-family:var(--mono);font-size:.74rem;opacity:.8}
+
   /* ---------- next ---------- */
   .next{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
   @media (max-width:960px){.next{grid-template-columns:1fr}}
@@ -302,6 +360,7 @@
     <a class="brand" href="#top"><svg style="color:var(--accent)"><use href="#gear"/></svg>Regen<b>/</b>Air-Brake</a>
     <ul>
       <li><a href="#how">How it works</a></li>
+      <li><a href="#calc">Calculations</a></li>
       <li><a href="#parts">Parts</a></li>
       <li><a href="#story">Design story</a></li>
       <li><a href="#build">Build log</a></li>
@@ -438,10 +497,10 @@
     </div>
 
     <div class="specs">
-      <div><div class="v">2<span>×</span></div><div class="k">Fans: turbine + propeller</div></div>
-      <div><div class="v">2<span>×</span></div><div class="k">Racks: store + release</div></div>
-      <div><div class="v">90<span>°</span></div><div class="k">Bevel-gear turn</div></div>
-      <div><div class="v">3</div><div class="k">Energy forms</div></div>
+      <div><a href="#calc"><div class="v">1287<span> Pa</span></div><div class="k">Air pressure on turbine</div></a></div>
+      <div><a href="#calc"><div class="v">91<span> N</span></div><div class="k">Force on turbine</div></a></div>
+      <div><a href="#calc"><div class="v">4.69<span> rev/s</span></div><div class="k">Turbine speed</div></a></div>
+      <div><a href="#calc"><div class="v">1.855<span> kg</span></div><div class="k">System mass</div></a></div>
     </div>
   </div>
 </header>
@@ -495,6 +554,124 @@
         <p>When accelerating, the stopper is pulled. The spring drives rack 2 through a separate gear train and spins the rear fan as a propeller.</p>
         <span class="chip mec">→ Mechanical thrust</span><div class="bar"></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="calc">
+  <span class="sec-no">SEC. B-2</span>
+  <div class="wrap">
+    <div class="label rv"><svg><use href="#gear"/></svg>Engineering calculations</div>
+    <h2 class="rv">From airflow to thrust, by the numbers</h2>
+    <p class="intro rv">Suban's hand calculations follow the energy through the system: how hard the air pushes on the turbine, how fast that spins it, and how much thrust the rear fan gives back. All values are his, worked for a 1500 kg car braking from top speed.</p>
+
+    <div class="calc-top rv">
+      <div class="panel">
+        <h3>Given</h3>
+        <table class="given">
+          <tr><td>Car mass<span class="sym">M</span></td><td>1500 kg</td></tr>
+          <tr><td>Top speed<span class="sym">v<sub>max</sub></span></td><td>330 km/h ≈ 91.67 m/s</td></tr>
+          <tr><td>Average speed while braking<span class="sym">v</span></td><td>(91.67 + 0) / 2 = 45.84 m/s</td></tr>
+          <tr><td>Turbine diameter<span class="sym">D</span></td><td>0.3 m</td></tr>
+          <tr><td>Mass per blade</td><td>0.045 kg</td></tr>
+          <tr><td>Air density<span class="sym">ρ</span></td><td>1.225 kg/m³</td></tr>
+        </table>
+      </div>
+      <div class="panel">
+        <h3>System mass · 1.855 kg</h3>
+        <div class="massbar" role="img" aria-label="Mass breakdown: rack 1 kg, shaft 0.5 kg, fan 0.2 kg, pinion 0.08 kg, bevel gear 0.075 kg">
+          <div style="width:53.9%;background:var(--accent)" title="Rack · 1 kg"><span>RACK 54%</span></div>
+          <div style="width:27%;background:var(--steel)" title="Rod / shaft · 0.5 kg"><span>SHAFT 27%</span></div>
+          <div style="width:10.8%;background:#e9c98f" title="Fan · 0.2 kg"><span>FAN</span></div>
+          <div style="width:4.3%;background:var(--air)" title="Pinion · 0.08 kg"></div>
+          <div style="width:4%;background:var(--thrust)" title="Bevel gear · 0.075 kg"></div>
+        </div>
+        <div class="legend">
+          <div><i style="background:var(--accent)"></i>Rack<b>1.000 kg</b></div>
+          <div><i style="background:var(--steel)"></i>Rod / shaft<b>0.500 kg</b></div>
+          <div><i style="background:#e9c98f"></i>Fan<b>0.200 kg</b></div>
+          <div><i style="background:var(--air)"></i>Pinion<b>0.080 kg</b></div>
+          <div><i style="background:var(--thrust)"></i>Bevel gear<b>0.075 kg</b></div>
+        </div>
+        <p class="massnote">The rack alone is <strong>more than half the mass</strong>, which is why he measured the pinion travel and cut the extra rack length to save weight.</p>
+      </div>
+    </div>
+
+    <div class="chain rv">
+      <div class="stage-row" style="color:var(--air)">Stage 1 · Air on the turbine</div>
+      <div class="calc air">
+        <h4>Average pressure on turbine</h4>
+        <div class="f">P = ½ ρ v²</div>
+        <div class="s">= 1.225 × (45.84)² / 2</div>
+        <div class="r"><b>1287</b><span>Pa</span></div>
+      </div>
+      <div class="calc air">
+        <h4>Force on turbine</h4>
+        <div class="f">F = P · A,&nbsp; A = πr²</div>
+        <div class="s">A = π(0.15)² = 9π/400 m²<br>F = 1287 × 9π/400</div>
+        <div class="r"><b>91</b><span>N</span></div>
+      </div>
+      <div class="calc air">
+        <h4>Acceleration of the system</h4>
+        <div class="f">a = F / m</div>
+        <div class="s">= 91 / 1.855</div>
+        <div class="r"><b>49</b><span>m/s²</span></div>
+      </div>
+
+      <div class="stage-row" style="color:var(--accent)">Stage 2 · Turbine speed</div>
+      <div class="calc tur">
+        <h4>Blade speed² at mid-radius</h4>
+        <div class="f">v² = r · a</div>
+        <div class="s">r = (0 + 0.15)/2 = 0.075 m<br>v² = 0.075 × 49</div>
+        <div class="r"><b>3.675</b><span>m²/s²</span></div>
+      </div>
+      <div class="calc tur">
+        <h4>Corrected for the whole blade</h4>
+        <div class="f">v²<sub>actual</sub> = v²<sub>mid</sub> × 4/3</div>
+        <div class="s">Averaging v² ∝ r² over the blade gives a value 33% larger than using the mid-radius.</div>
+        <div class="r"><b>4.89</b><span>m²/s²</span><em>+33%</em></div>
+      </div>
+      <div class="calc tur">
+        <h4>Angular velocity</h4>
+        <div class="f">ω² = v² / r²,&nbsp; n = ω / 2π</div>
+        <div class="s">ω² = 4.89 / (0.075)² → ω = 29.48 rad/s</div>
+        <div class="r"><b>4.692</b><span>rev/s</span><em>≈ 282 rpm</em></div>
+      </div>
+
+      <div class="stage-row" style="color:var(--thrust)">Stage 3 · Thrust from the rear fan</div>
+      <div class="calc out">
+        <h4>Forward thrust</h4>
+        <div class="f">T = k<sub>T</sub> ρ n² D⁴</div>
+        <div class="s">k<sub>T</sub> = 0.6<br>T = 0.6 × 1.225 × (4.692)² × (0.3)⁴</div>
+        <div class="r"><b>0.131</b><span>N</span></div>
+      </div>
+      <div class="calc out">
+        <h4>Drag caused by the fan</h4>
+        <div class="f">D = ½ ρ v² C<sub>D</sub> A</div>
+        <div class="s">C<sub>D</sub> = 0.05,&nbsp; A = 9π/400 m²<br>D = 1.225 × (4.89)² × 0.05 × 9π/400 / 2</div>
+        <div class="r"><b>0.0518</b><span>N</span></div>
+      </div>
+      <div class="calc out">
+        <h4>Net acceleration of the car</h4>
+        <div class="f">a = (T − D) / M</div>
+        <div class="s">= (0.131 − 0.0518) / 1500<br>= 0.0792 / 1500</div>
+        <div class="r"><b>5.28×10⁻⁵</b><span>m/s²</span></div>
+      </div>
+    </div>
+
+    <div class="verdict rv">
+      <div class="big">+0.079 N<small>NET FORWARD FORCE</small></div>
+      <p>The rear fan gives a real net push forward: thrust beats its own drag. On a full 1500 kg car the effect at this model scale is very small, which is exactly why the next revision targets lighter materials and lower energy losses.</p>
+    </div>
+
+    <div class="calc-notes rv">
+      <div class="panel"><h3>Assumption</h3><p>The thrust and drag coefficients (k<sub>T</sub> = 0.6, C<sub>D</sub> = 0.05) are taken from fans used on drones.</p></div>
+      <div class="panel"><h3>Material choice</h3><p>Plastic would be lighter and make the system more effective, but it was expensive and wears out faster, so the model uses steel.</p></div>
+      <a class="pdf" href="Energy-Storage%20Turbine%20System%20Calculations.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 12v6M9 15l3 3 3-3"/></svg>
+        <b>Full calculations</b>
+        <span>PDF · 3 pages · 78 KB</span>
+      </a>
     </div>
   </div>
 </section>
