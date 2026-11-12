@@ -293,7 +293,7 @@
   .calc .r b{font-size:1.65rem;font-weight:700;color:var(--c,var(--accent));line-height:1}
   .calc .r span{font-family:var(--mono);font-size:.85rem;color:var(--steel)}
   .calc .r em{margin-left:auto;font-style:normal;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
-  .calc.air{--c:var(--air)} .calc.tur{--c:var(--accent)} .calc.out{--c:var(--thrust)}
+  .calc.c-air{--c:var(--air)} .calc.c-tur{--c:var(--accent)} .calc.c-out{--c:var(--thrust)}
   .calc sup,.calc sub{font-size:.7em}
   .verdict{display:grid;grid-template-columns:auto 1fr;gap:18px 26px;align-items:center;margin-top:26px;background:linear-gradient(90deg,#7bd88f14,transparent 70%);border:1px solid var(--line-2);border-left:3px solid var(--thrust);border-radius:12px;padding:22px 24px}
   @media (max-width:600px){.verdict{grid-template-columns:1fr}}
@@ -599,19 +599,19 @@
 
     <div class="chain rv">
       <div class="stage-row" style="color:var(--air)">Stage 1 · Air on the turbine</div>
-      <div class="calc air">
+      <div class="calc c-air">
         <h4>Average pressure on turbine</h4>
         <div class="f">P = ½ ρ v²</div>
         <div class="s">= 1.225 × (45.84)² / 2</div>
         <div class="r"><b>1287</b><span>Pa</span></div>
       </div>
-      <div class="calc air">
+      <div class="calc c-air">
         <h4>Force on turbine</h4>
         <div class="f">F = P · A,&nbsp; A = πr²</div>
         <div class="s">A = π(0.15)² = 9π/400 m²<br>F = 1287 × 9π/400</div>
         <div class="r"><b>91</b><span>N</span></div>
       </div>
-      <div class="calc air">
+      <div class="calc c-air">
         <h4>Acceleration of the system</h4>
         <div class="f">a = F / m</div>
         <div class="s">= 91 / 1.855</div>
@@ -619,19 +619,19 @@
       </div>
 
       <div class="stage-row" style="color:var(--accent)">Stage 2 · Turbine speed</div>
-      <div class="calc tur">
+      <div class="calc c-tur">
         <h4>Blade speed² at mid-radius</h4>
         <div class="f">v² = r · a</div>
         <div class="s">r = (0 + 0.15)/2 = 0.075 m<br>v² = 0.075 × 49</div>
         <div class="r"><b>3.675</b><span>m²/s²</span></div>
       </div>
-      <div class="calc tur">
+      <div class="calc c-tur">
         <h4>Corrected for the whole blade</h4>
         <div class="f">v²<sub>actual</sub> = v²<sub>mid</sub> × 4/3</div>
         <div class="s">Averaging v² ∝ r² over the blade gives a value 33% larger than using the mid-radius.</div>
         <div class="r"><b>4.89</b><span>m²/s²</span><em>+33%</em></div>
       </div>
-      <div class="calc tur">
+      <div class="calc c-tur">
         <h4>Angular velocity</h4>
         <div class="f">ω² = v² / r²,&nbsp; n = ω / 2π</div>
         <div class="s">ω² = 4.89 / (0.075)² → ω = 29.48 rad/s</div>
@@ -639,19 +639,19 @@
       </div>
 
       <div class="stage-row" style="color:var(--thrust)">Stage 3 · Thrust from the rear fan</div>
-      <div class="calc out">
+      <div class="calc c-out">
         <h4>Forward thrust</h4>
         <div class="f">T = k<sub>T</sub> ρ n² D⁴</div>
         <div class="s">k<sub>T</sub> = 0.6<br>T = 0.6 × 1.225 × (4.692)² × (0.3)⁴</div>
         <div class="r"><b>0.131</b><span>N</span></div>
       </div>
-      <div class="calc out">
+      <div class="calc c-out">
         <h4>Drag caused by the fan</h4>
         <div class="f">D = ½ ρ v² C<sub>D</sub> A</div>
         <div class="s">C<sub>D</sub> = 0.05,&nbsp; A = 9π/400 m²<br>D = 1.225 × (4.89)² × 0.05 × 9π/400 / 2</div>
         <div class="r"><b>0.0518</b><span>N</span></div>
       </div>
-      <div class="calc out">
+      <div class="calc c-out">
         <h4>Net acceleration of the car</h4>
         <div class="f">a = (T − D) / M</div>
         <div class="s">= (0.131 − 0.0518) / 1500<br>= 0.0792 / 1500</div>
